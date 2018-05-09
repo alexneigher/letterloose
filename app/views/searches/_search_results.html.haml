@@ -1,0 +1,9 @@
+%ul.list-group
+  - @titles.each do |title|
+    %li.list-group-item
+      = link_to title.name, title_path(title)
+      %small.text-muted
+        = "(#{title.category.name})"
+
+  - if @titles.empty?
+    No results

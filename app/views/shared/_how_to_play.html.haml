@@ -1,0 +1,59 @@
+.row
+  .col-md-12
+    %h1
+      LetterLoose is a game for people who like words, wit, and laughter.
+    %p
+      Alter a film, book, or song title, or a common phrase, by adding, subtracting, or changing one letter.
+
+      %a.font20.pull-right{"data-toggle" => "modal", :href => "#howToPlay"} 
+        How to play.
+        %i.fa.fa-info-circle
+  .col-md-12
+    #howToPlay.modal.fade
+      .modal-dialog.modal-lg
+        .modal-content
+          .modal-header
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+            %h4.modal-title How To Play
+          .modal-body
+            %p
+              The premise of the game is that you alter a film, book, or song title, or a common phrase, by adding, subtracting, or changing
+              %strong ONE
+              letter.  Now you've created a new title or phrase. The challenge is to construct a clever description for what you've just created.
+            %hr
+            .row
+              .col-md-4
+                .highest-rated-container.pad2.panel.panel-default
+                  %strong Add-a-letter example:
+                  %ol
+                    %li Baker's Dozen
+                    %li Add an "R"
+                    %li
+                      = "Ba<strong>R</strong>ker's Dozen".html_safe
+                  %strong New Description:
+                  %br
+                  A litter of 13 puppies
+
+              .col-md-4
+                .weeks-highest-rated.pad2.panel.panel-default
+                  %strong Delete-a-letter example:
+                  %ol
+                    %li Big Lebowski.
+                    %li Delete the 'g'.
+                    %li Bi Lebowski.
+                  %strong New Description:
+                  %br
+                  Polish immigrant struggles with his sexuality
+              .col-md-4
+                .pad2.panel.panel-default
+                  %strong Change-a-letter example:
+                  %ol
+                    %li Lust for Life
+                    %li Change first "L" to a "D"
+                    %li= "<strong>D</strong>ust for Life".html_safe
+                  %strong New Description:
+                  %br
+                  Roomba Guarantee
+
+          .modal-footer
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

@@ -1,0 +1,17 @@
+= content_for(:og_tags) do
+  %meta{:content => "#{@description.tweak.name} (#{@description.tweak.title.name})", :name => "og:title"}/
+  %meta{:content => @description.text, :name => "og:description"}/
+.pattern-background.full-height-div
+.panel.panel-default
+  .panel-body
+    %div{class: dom_id(@description)}
+      = render partial: 'shared/description', locals: {description: @description}
+
+
+%br
+%br
+%br
+%br
+.row
+  .col-md-4.col-md-offset-4
+    = link_to 'Play LetterLoose', root_path, class: 'btn btn-letterloose btn-shadow btn-block btn-lg'

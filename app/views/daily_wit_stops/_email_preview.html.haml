@@ -1,0 +1,32 @@
+%div.pattern-background
+  = image_tag 'title.png', style: 'max-width:720px;width: 80%;margin: auto;display: block; position: relative'
+  .row
+    .col-md-8.col-md-offset-2
+      .text-center
+        %h2.m00y.text-white Daily Wit Stop
+      .panel.m3y
+        .panel-body
+          %div
+            %p
+              %h4
+                = description.present? ? description.tweak.title.name : 'PLACEHOLDER'
+
+            %h5{margin: '0px'}
+              - if description.present?
+                %div= link_to description.tweak.name, title_tweak_path(description.tweak.title, description.tweak)
+
+            = description.present? ? "\"#{description.text}\"": 'Click "show preview" to add content'
+
+            - if description.present?
+              = description.likes_count
+              %i.fa.fa-thumbs-up
+            
+
+              %br
+              %small.small.text-muted
+                = link_to description.user.username, user_descriptions_path(description.user)
+                = "- #{time_ago_in_words(description.created_at)} ago"
+              %br
+
+  %p.text-white.text-center
+    To unsubscribe from the Daily Wit Stop 'click here'

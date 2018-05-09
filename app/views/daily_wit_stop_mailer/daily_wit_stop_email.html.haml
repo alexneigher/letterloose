@@ -1,0 +1,30 @@
+%div{style: " background-image:url(#{image_path('background_pattern.jpg')});padding:40px;"}
+
+  = link_to root_url do
+    = image_tag 'title.png', style: 'max-width:720px;width: 80%;margin: auto;display: block; position: relative'
+
+  %div{style: 'max-width:720px; margin: auto;position: relative;padding: 30px 0 80px'}
+    %strong
+      %p{style: 'text-align:center;color: #fff;font-size: 20px;margin-bottom:10px;'}
+        DAILY WIT STOP!
+
+    .panel
+      .panel-body
+        %div
+          %h2{style: 'margin:0px'}
+            = @description.tweak.title.name
+
+          = link_to title_tweak_url(@description.tweak.title, @description.tweak), target: '_blank' do
+            %h3{style: 'margin:10px 0'}
+              = @description.tweak.name
+
+          %p
+            = "\"#{@description.text}\""
+            = @description.likes_count
+
+          %p{style: 'color:#777; font-size: 13px;'}
+            = "#{@description.user.username} - #{time_ago_in_words(@description.created_at)} ago"
+
+    %p.text-white
+      To unsubscribe from the Daily Wit Stop
+      = link_to 'click here', public_email_preferences_url(@user.email_preferences, email_preferences: {wit_stop: false})

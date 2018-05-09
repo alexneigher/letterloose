@@ -1,0 +1,17 @@
+%h2 Email Preferences
+%p You can control which emails you'd like to receive here
+
+= form_for @email_preferences, url: user_email_preferences_path(current_user), method: :put do |f|
+  .panel.panel-default
+    %ul.list-group
+      %li.list-group-item
+        Daily Wit Stop
+        = hidden_field_tag 'email_preferences[wit_stop]', false
+        = f.check_box :wit_stop
+      %li.list-group-item
+        Upvote Notifications
+        = hidden_field_tag 'email_preferences[upvote_notifications]', false
+        = f.check_box :upvote_notifications
+
+      %li.list-group-item
+        = f.submit 'Update', class: 'btn btn-success btn-sm'

@@ -1,0 +1,8 @@
+.row.row-flex.row-flex-wrap
+  - @descriptions.each do |description|
+    .col-md-4
+      .panel.panel-default
+        .panel-body{class: dom_id(description)}
+          = render partial: 'shared/description', locals: {description: description}
+
+= paginate @descriptions

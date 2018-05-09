@@ -1,0 +1,28 @@
+
+= link_to root_url do
+  = image_tag 'title.png', style: 'max-width:480px;width: 80%;margin: auto;display: block; position: relative'
+
+%div{style: 'max-width:720px; margin: auto;position: relative;padding: 10px 0'}
+  %strong
+    %p{style:'text-shadow: 0 0 5px #fff'}
+      Yo #{@user.username},
+  %p
+    Looks like you've got some upvotes today! Here's the summary of what people liked:
+
+  .panel{style: 'margin:20px 0 50px'}
+    .panel-body
+      %div
+        %p
+          - @descriptions[0].each do |d|
+            %div{style: 'padding: 10px 0'}
+              ="\"<strong>#{d[:text]}\"</strong> was liked #{pluralize(d[:count], 'time')}".html_safe
+
+  .div{style: "text-align: center"}
+    = link_to root_url, style: "background-color:#428bca;color: #fff; border-radius: 6px; padding: 15px 30px;text-decoration: none;"  do
+      Back to LetterLoose
+      
+  %hr{style: 'margin-top:50px'}
+
+  %p{style: 'color: #777'}
+    To stop getting upvote notifications
+    = link_to 'click here', public_email_preferences_url(@user.email_preferences, email_preferences: {upvote_notifications: false})

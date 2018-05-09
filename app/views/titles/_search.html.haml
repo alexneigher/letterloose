@@ -1,0 +1,19 @@
+= form_tag new_search_path, method: :get, remote: true do
+  = text_field_tag 'query', nil, placeholder: 'ex: The Big Lebowski', class: 'form-control'
+
+#search-results
+
+
+
+:javascript
+  $(function(){
+    $('#query').keyup(function(){
+
+      var query = $(this).val();
+
+      if (query.length >= 3){
+        $(this).parent('form').submit();
+      }
+
+    })
+  })

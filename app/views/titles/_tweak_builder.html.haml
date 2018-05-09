@@ -1,0 +1,57 @@
+= form_tag title_tweaks_path(@title), method: :post do
+  .row
+    .col-md-12
+      %strong How to play:
+      %ol
+        %li Click on any letter to get started
+    .col-md-12
+      #items1
+        - @title.name.chars.split(' ').each do |word_letters|
+          .word
+            - word_letters.each do |char|
+              .tweak-character.original-character
+                %span.character= char.titleize.gsub(' ', '&nbsp').html_safe
+                = hidden_field_tag "characters[]", char.titleize
+            .tweak-character.original-character
+              %span.character
+                &nbsp;
+              = hidden_field_tag "characters[]", ' '
+
+
+  .row
+    %br
+  .row
+    .col-md-6
+      = text_area_tag 'description', nil, placeholder: 'Add a description to your new title!', rows: 5, class: 'form-group form-control description-area hidden'
+    .col-md-6
+      = submit_tag 'Submit Your New Title', class: 'btn btn-primary btn-sm submit-button hidden'
+      = link_to title_path(@title), class: 'btn btn-danger pull-right btn-sm reset-btn hidden' do
+        Reset Title
+
+#alphabet-container.hidden
+  .well
+    .row
+      .col-md-12
+        %strong How to change a letter:
+        %ol
+          %li Click a letter from below to replace the blinking letter
+          %li To add, drag the new letter into the correct place
+          %li To delete, click "delete"
+        %hr
+    .row
+      .col-md-12
+        #addable-characters
+          #items2
+            - Alphabet::LETTERS.each do |char|
+              .tweak-character.addable
+                = char.html_safe
+                = hidden_field_tag "characters[]", char.gsub('&nbsp', ' ')
+            %br
+            - Alphabet::NUMBERS.each do |char|
+              .tweak-character.addable
+                = char.html_safe
+                = hidden_field_tag "characters[]", char
+
+
+          .delete-button
+            DELETE

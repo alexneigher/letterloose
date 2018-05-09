@@ -1,0 +1,28 @@
+%div
+  %p
+    %h4
+      = description.tweak.title.name
+      .pull-right
+        = link_to '#', onclick: "postToFeed('#{title_tweak_description_path(description.tweak.title, description.tweak, description)}');" do
+          %i.fa.fa-facebook-official
+
+  %h5{margin: '0px'}
+    %div= link_to description.tweak.name, title_tweak_path(description.tweak.title, description.tweak)
+
+  = "\"#{description.text}\""
+
+  - if description.liked_by?(current_user)
+    = description.likes_count
+    %i.fa.fa-thumbs-up
+  - else
+    = link_to title_tweak_description_upvote_path(description.tweak.title, description.tweak, description, source: 'index'), remote: true, method: :put do
+      = description.likes_count
+      %i.fa.fa-thumbs-up
+
+  %br
+  %small.small.text-muted
+    = link_to description.user.username, user_descriptions_path(description.user)
+    = "- #{time_ago_in_words(description.created_at)} ago"
+  %br
+
+

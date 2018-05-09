@@ -1,0 +1,22 @@
+- count = @likes.count
+- return nil if count.zero?
+
+%a.dropdown-toggle.text-white{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+  %span.glyphicon.glyphicon-book.text-letter-loose
+  %span.text-letter-loose
+    = pluralize(count, 'Upvote')
+    %span.caret
+%ul.dropdown-menu
+  - @likes.each do |like|
+    %li
+      .dropdown-item
+        = link_to user_descriptions_path(like.user) do
+          %span.text-letter-loose
+            = like.user.username
+        has liked your description:
+        = link_to user_descriptions_path(current_user) do
+          = like.description.text.truncate(50)
+        = link_to like_path(like, like: {acknowledged: :true}), remote: true, method: :put do
+          %i.fa.fa-times.text-muted
+
+

@@ -1,0 +1,34 @@
+= link_to "< Show All #{@title.category.name}", category_path(@title.category)
+.row
+  .col-md-6
+    %h4
+      =@title.name
+  .col-md-6
+    = link_to play_random_path(category_id: @title.category.id), class: 'btn btn-primary btn-lg pull-right' do
+      Another #{@title.category.name.titleize.singularize}
+%br
+.panel.panel-default
+  .panel-body
+    = render partial: 'titles/tweak_builder'
+
+.row
+  .col-md-12
+    %ul.list-group
+      - @tweaks.each do |tweak|
+        %li.list-group-item.list-group-striped.clearfix{id: dom_id(tweak)}
+          %row
+            .col-md-6
+              %h4
+                = link_to "\"#{tweak.name}\"", title_tweak_path(@title, tweak)
+              %small.text-muted
+                = "#{time_ago_in_words(tweak.created_at)} ago by #{tweak.user.username}"
+            .col-md-6
+              = link_to title_tweak_path(@title, tweak), class: "btn btn-default pull-right" do
+                Add your own description
+      - if @title.tweaks.empty?
+        %h4
+          Looks like nobody has played with this title before. You're the first!
+
+
+= javascript_include_tag 'touch_punch'
+= javascript_include_tag 'tweak_builder'

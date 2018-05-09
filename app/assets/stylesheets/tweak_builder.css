@@ -1,0 +1,75 @@
+#sortable{
+  margin-bottom: 20px;
+  clear: both;
+}
+
+#sortable .not-draggable{
+  cursor: not-allowed;
+}
+
+#sortable .added, #addable-characters .tweak-character{
+  background-color: #2881b5;
+  color: #fff;
+}
+
+#sortable .deleteable, #addable-characters .tweak-character, .original-character{
+  cursor: pointer;
+}
+
+#sortable .deleteable:hover{
+  opacity: 0.3;
+}
+
+#sortable .tweak-character.addable{
+  cursor: move;
+}
+
+
+.word {
+  display: inline-block;
+}
+.tweak-character, .delete-button{
+  width: 35px;
+  text-align:center;
+  background-color: #feba13;
+  color: #000;
+  display: inline-block;
+  margin: 5px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px #696969;
+  font-size: 35px;
+}
+
+.delete-button{
+  background-color: red;
+  color: #ffffff;
+  width: 130px;
+}
+
+.tweak-character.focus {
+  box-shadow: 0px 0px 5px red;
+  color: #fff;
+}
+
+@keyframes focusAnimation {
+  0%   { background-color: #feba13; }
+  100% { background-color: #2881b5; }
+}
+@-o-keyframes focusAnimation{
+  0%   { background-color: #feba13; }
+  100% { background-color: #2881b5; }
+}
+@-moz-keyframes focusAnimation{
+  0%   { background-color: #feba13; }
+  100% { background-color: #2881b5; }
+}
+@-webkit-keyframes focusAnimation{
+  0%   { background-color: #feba13; }
+  100% { background-color: #2881b5; }
+}
+.focus {
+   -webkit-animation: focusAnimation 0.5s infinite;
+   -moz-animation: focusAnimation 0.5s infinite;
+   -o-animation: focusAnimation 0.5s infinite;
+    animation: focusAnimation 0.5s infinite;
+}

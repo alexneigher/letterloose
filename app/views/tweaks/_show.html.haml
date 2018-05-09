@@ -1,0 +1,41 @@
+%h1
+  "#{tweak.name}"
+
+%ul.list-group
+  - @descriptions.each do |description|
+    %li.list-group-item
+      .btn-group.btn-group
+        - if description.liked_by?(current_user)
+          %button.btn.btn-disabled.btn-sm{:type => "button"}
+            = description.likes_count
+            %i.fa.fa-thumbs-up
+        - else
+          = link_to title_tweak_description_upvote_path(@title, tweak, description), remote: true, method: :put do
+            %button.btn.btn-success.btn-sm{:type => "button"}
+              = description.likes_count
+              %i.fa.fa-thumbs-up
+      %h4{id: dom_id(description)}
+        = link_to title_tweak_description_path(@title, tweak, description) do
+          = description.text
+
+        -if description.user == current_user
+          = link_to edit_title_tweak_description_path(@title, @tweak, description), remote: true do
+            %i.fa.fa-pencil
+
+
+      \- #{description.user.username}
+
+
+.form-group
+  %button.btn.btn-default{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample", "data-toggle" => "collapse", :type => "button"}
+    Add your own description
+
+  #collapseExample.collapse.m1t
+    .card.card-block
+      = form_for :description, url: title_tweak_descriptions_path(@title, tweak), remote: true, method: :post do |f|
+        .row.form-group
+          .col-md-6
+            = f.text_area :text, value: nil, placeholder: "Add your description of '#{tweak.name}'", rows: 3, class: 'form-control'
+        .row
+          .col-md-8
+            = f.submit 'Save', class: 'btn btn-primary'

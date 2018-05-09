@@ -1,0 +1,32 @@
+%nav.navbar.navbar-inverse.pattern-background
+  .container-fluid
+    .navbar-header
+      = link_to root_path, class: 'navbar-brand', style: 'max-width: 460px;' do
+        = image_tag 'title_trademark.png', style: 'max-width: 100%;margin-top: -6px;animation-duration: 1.2s;', class: ('animated bounceInDown' if params['controller'] == 'categories' && params['action'] == 'index')
+    %button.navbar-toggle{"data-target" => "#myNavbar", "data-toggle" => "collapse", :type => "button"}
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+
+    #myNavbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li.dropdown#likes-container
+            - # rendered with ajax
+
+          = render partial: 'layouts/navbar/user_links'
+        - else
+          %li
+            = link_to new_registration_path('user') do
+              %span.glyphicon.glyphicon-user.text-white
+              %span.text-white
+                Sign Up
+          %li
+            = link_to new_session_path('user') do
+              %span.glyphicon.glyphicon-log-in.text-white
+              %span.text-white
+                Login
+
+
+:javascript
+  $.get("#{likes_path()}");

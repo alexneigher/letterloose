@@ -1,0 +1,25 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", :name => "viewport"}/
+
+    %title= content_for?(:title) ? yield(:title) : "LetterLoose"
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+
+  %body
+    %nav.navbar.navbar-inverse
+      .container-fluid
+        .navbar-header
+          = link_to root_path, class: 'navbar-brand' do
+            = image_tag 'title.png', style: 'max-width: 420px;margin-top: -6px;'
+
+    .container
+      .row
+        .col-lg-12
+          .flash-container
+            = bootstrap_flash
+          = yield

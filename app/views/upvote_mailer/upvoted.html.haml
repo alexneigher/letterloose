@@ -1,0 +1,31 @@
+
+= link_to root_url do
+  = image_tag 'title.png', style: 'max-width:480px;width: 80%;margin: auto;display: block; position: relative'
+
+%div{style: 'max-width:720px; margin: auto;position: relative;padding: 10px 0'}
+  %strong
+    %p{style: 'text-align:center; text-shadow: 0 0 5px #fff'}
+      = "#{@upvoter.username} likes your description!"
+
+  .panel{style: 'margin:20px 0 50px'}
+    .panel-body
+      %div
+        %h2{style: 'margin:0px'}
+          = @description.tweak.title.name
+
+        = link_to title_tweak_url(@description.tweak.title, @description.tweak), target: '_blank' do
+          %h3{style: 'margin:10px 0'}
+            = @description.tweak.name
+
+        %p= @description.text
+
+  .div{style: "text-align: center"}
+    = link_to root_url, style: "background-color:#428bca;color: #fff; border-radius: 6px; padding: 15px 30px;text-decoration: none;"  do
+      Back to LetterLoose
+  
+
+  %hr{style: 'margin-top:50px'}
+
+  %p{style: 'color: #777'}
+    To stop getting upvote notifications
+    = link_to 'click here', public_email_preferences_url(@description_author.email_preferences, email_preferences: {upvote_notifications: false})

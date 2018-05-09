@@ -1,0 +1,9 @@
+= form_for @description, url: title_tweak_description_path(@title, @tweak, @description), method: :put, remote: true do |f|
+  .row
+    .col-md-6
+      .form-group
+        = f.text_field :text, class: 'form-control'
+
+      = f.submit 'Update', class: 'btn btn-sm btn-primary', style: 'margin-right: 5px;'
+
+      = link_to 'cancel', title_tweak_path(@title, @tweak), class: 'btn btn-sm btn-default'
