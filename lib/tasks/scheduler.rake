@@ -7,7 +7,7 @@ task :send_daily_wit_stop => :environment do
 
   daily_wit_stop.update(sent: true, sent_at: DateTime.current )
 
-  User.joins(:email_preferences).where(email_preferences: {wit_stop: true}).each do |user|
+  User.joins(:email_preferences).where(email_preferences: {wit_stop: true}).find_each do |user|
     DailyWitStopMailer.daily_wit_stop_email(user, daily_wit_stop).deliver_now
   end
 end
@@ -23,7 +23,6 @@ task :send_upvote_summary => :environment do
     description_like_count << descriptions.map do |d|
                                 {text: d.text, count: likes_by_description_id[d.id]}
                               end
-
     UpvoteMailer.upvote_summary(user_id, description_like_count).deliver_now
   end
 end
