@@ -9,3 +9,8 @@
       .panel.panel-default
         .panel-body{class: dom_id(description)}
           = render partial: 'shared/description', locals: {description: description}
+
+
+.row
+  .col-md-12
+    = paginate @descriptions
