@@ -11,7 +11,7 @@ class LikesController < ApplicationController
     @like = Like.find(params[:id])
     @like.update(like_params)
 
-    @likes =unacknowledged_likes
+    @likes = unacknowledged_likes
     render :index
   end
 

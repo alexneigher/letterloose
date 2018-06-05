@@ -21,6 +21,8 @@ gem 'twitter'
 
 gem 'kaminari'
 
+gem 'rack-attack'
+
 gem 'jquery-ui-rails'
 
 gem 'delayed_job_active_record'

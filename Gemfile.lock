@@ -150,6 +150,8 @@ GEM
     public_suffix (2.0.5)
     puma (3.8.2)
     rack (2.0.1)
+    rack-attack (5.2.0)
+      rack
     rack-pjax (1.0.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
@@ -279,6 +281,7 @@ DEPENDENCIES
   pg
   pry-rails
   puma (~> 3.0)
+  rack-attack
   rails (~> 5.0.2)
   rails_12factor
   rails_admin (~> 1.1.1)
