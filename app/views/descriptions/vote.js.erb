@@ -7,5 +7,5 @@
   $("#<%= dom_id(@tweak) %>").html("<%= j(render partial: 'tweaks/show', locals: {tweak: @tweak}) %>")
 <% end %>
 
-// var thumbsUp = new Audio("/sounds/upvote.mp3");
-// thumbsUp.play();
+var thumbsUp = new Audio("/sounds/upvote.mp3");
+thumbsUp.play();
