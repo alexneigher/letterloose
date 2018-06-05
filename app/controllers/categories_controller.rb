@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
 
   def index
+    sleep(10)
     @categories = Category.all
 
     @highest_rated_descriptions_all_time = descriptions.limit(25)

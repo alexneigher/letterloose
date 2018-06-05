@@ -1,12 +1,12 @@
 //Sound Files
-var addSound = new Audio("../sounds/add_letter.mp3");
-var deleteSound = new Audio("../sounds/remove_letter.mp3")
+// var addSound = new Audio("../sounds/add_letter.mp3");
+// var deleteSound = new Audio("../sounds/remove_letter.mp3")
 
 $(function(){
   $(".word, #items2").sortable({
     connectWith: ".word, #items2 .tweak-character",
     update: function( ) {
-      addSound.play();
+      //addSound.play();
       completeActionShowSubmit();
     }
   });
@@ -21,7 +21,7 @@ $(function(){
 
   //add a letter
   $('.tweak-character.addable').click(function(){
-    addSound.play();
+    //addSound.play();
     var newCharacter = $(this).children('input').val();
     var $focusedCharacter = $('.tweak-character.focus');
     $focusedCharacter.children('input').val(newCharacter);
@@ -34,7 +34,7 @@ $(function(){
   //press red delete button
   $('.delete-button').click(function(){
     $('.tweak-character.focus').remove();
-    deleteSound.play();
+    //deleteSound.play();
     completeActionShowSubmit();
 
   })
