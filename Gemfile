@@ -25,8 +25,6 @@ gem 'jquery-ui-rails'
 
 gem 'delayed_job_active_record'
 
-gem "rack-timeout"
-
 gem 'rails_admin', '~> 1.1.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

@@ -155,7 +155,6 @@ GEM
       rack (>= 1.1)
     rack-test (0.6.3)
       rack (>= 1.0)
-    rack-timeout (0.5.1)
     rails (5.0.2)
       actioncable (= 5.0.2)
       actionmailer (= 5.0.2)
@@ -280,7 +279,6 @@ DEPENDENCIES
   pg
   pry-rails
   puma (~> 3.0)
-  rack-timeout
   rails (~> 5.0.2)
   rails_12factor
   rails_admin (~> 1.1.1)
