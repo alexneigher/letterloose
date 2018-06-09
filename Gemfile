@@ -23,6 +23,8 @@ gem 'kaminari'
 
 gem 'rack-attack'
 
+gem 'scout_apm'
+
 gem 'jquery-ui-rails'
 
 gem 'delayed_job_active_record'
