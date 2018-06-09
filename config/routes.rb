@@ -28,7 +28,11 @@ Rails.application.routes.draw do
     resource :email_preferences
   end
 
-  resources :likes
+  resources :likes do
+    collection do
+      get :counter
+    end
+  end
 
 
   namespace :public do

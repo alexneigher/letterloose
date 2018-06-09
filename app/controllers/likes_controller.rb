@@ -1,10 +1,17 @@
 class LikesController < ApplicationController
 
   #used to render your unacknowledged likes
-  def index
-    @likes = user_signed_in? ? unacknowledged_likes : []
+  def counter
+    redirect_to root_path and return unless user_signed_in?
+
+    @likes = unacknowledged_likes
   end
 
+  def index
+    redirect_to root_path and return unless user_signed_in?
+
+    @likes = all_likes.page(@page).per(50)
+  end
 
   #this is used to "acknowledge a like notification"
   def update
@@ -12,18 +19,21 @@ class LikesController < ApplicationController
     @like.update(like_params)
 
     @likes = unacknowledged_likes
-    render :index
+    redirect_to likes_path
   end
 
 end
 
 private
-  def unacknowledged_likes
+  def all_likes
     Like
-      .unacknowledged
       .includes(:user, :description)
       .joins(:description)
       .where(descriptions: {user_id: current_user.id})
+  end
+
+  def unacknowledged_likes
+    all_likes.unacknowledged
   end
 
   def like_params

@@ -1,0 +1,16 @@
+%ul.list-group
+  - @likes.order(acknowledged: :asc).order("likes.created_at DESC").each do |like|
+    %li.list-group-item{class: (' disabled' if like.acknowledged?)}
+      = link_to user_descriptions_path(like.user) do
+        %span.text-letter-loose
+          = like.user.username
+      has liked your description:
+      = link_to user_descriptions_path(current_user) do
+        = like.description.text.truncate(70)
+      - unless like.acknowledged?
+        = link_to like_path(like, like: {acknowledged: :true}), method: :put do
+          %i.fa.fa-times.text-muted
+
+
+
+= paginate @likes
