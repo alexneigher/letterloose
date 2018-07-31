@@ -52,6 +52,9 @@
             |
             =link_to terms_of_use_path do
               %span.text-muted Terms of Use
+          .facebook-invite-friends.col-md-2
+            =image_tag 'facebook-invite-image.png', style: 'max-height:32px;margin-top:-10px;', onclick: 'sendRequests(); return false;'
+              
 
 
     = render partial: 'shared/google_analytics'

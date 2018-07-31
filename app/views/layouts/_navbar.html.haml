@@ -1,3 +1,40 @@
+%span{class: 'temp_information', data: {'fb-app-id': ENV['FACEBOOK_APP_ID']} }
+
+:javascript
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : $('.temp_information').data('fb-app-id')
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+
+    // ADD ADDITIONAL FACEBOOK CODE HERE
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+:javascript
+  function sendRequests() {
+      FB.ui({
+          method: 'apprequests',
+          message: 'LetterLoose is a game for people who like words, wits, and laughter. Play now!'
+      }, function(response) {
+          if (response != null && response.to && response.to.length > 0) {
+              for (var i = 0; i < response.to.length; i++) {
+                  console.log("Invited: " + response.to[i]);
+              }
+          } else {
+              console.log('No invitations sent');
+          }
+      });
+  }
+
 %nav.navbar.navbar-inverse.pattern-background
   .container-fluid
     .navbar-header
