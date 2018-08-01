@@ -19,3 +19,7 @@
   float: right;
   cursor: pointer;
 }
+
+.facebook-invite-friends-no-float {
+  cursor: pointer;
+}
